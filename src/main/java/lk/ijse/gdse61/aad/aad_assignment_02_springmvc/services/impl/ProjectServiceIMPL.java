@@ -12,6 +12,7 @@ import lk.ijse.gdse61.aad.aad_assignment_02_springmvc.dto.ProjectDTO;
 import lk.ijse.gdse61.aad.aad_assignment_02_springmvc.entity.ProjectEntity;
 import lk.ijse.gdse61.aad.aad_assignment_02_springmvc.entity.TLEntity;
 import lk.ijse.gdse61.aad.aad_assignment_02_springmvc.repository.ProjectRepository;
+import lk.ijse.gdse61.aad.aad_assignment_02_springmvc.repository.TLRepository;
 import lk.ijse.gdse61.aad.aad_assignment_02_springmvc.services.ProjectService;
 import lk.ijse.gdse61.aad.aad_assignment_02_springmvc.util.Converter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ public class ProjectServiceIMPL implements ProjectService {
 
     @Autowired
     ProjectRepository projectRepository;
+    TLRepository tlRepository;
 
     @Autowired
     Converter converter;
@@ -41,9 +43,14 @@ public class ProjectServiceIMPL implements ProjectService {
     public void updateProject(String id, ProjectDTO projectDTO) {
         Optional<ProjectEntity> tempProject = projectRepository.findById(id);
         if(!tempProject.isPresent())throw new RuntimeException("Not Fount Project in Database");
+//        Optional<TLEntity> tempTL = tlRepository.findById(projectDTO.getTlId());
+//        if(!tempTL.isPresent())throw new RuntimeException("Not Fount Tech Lead in Database");
+
         tempProject.get().setCompanyName(projectDTO.getCompanyName());
         tempProject.get().setCompanyEmail(projectDTO.getCompanyEmail());
-//        tempProject.get().(projectDTO.getCompanyEmail());
+        //tempProject.get().setTlEntity(tempTL.get());
+
+
     }
 
     @Override

@@ -11,6 +11,7 @@ package lk.ijse.gdse61.aad.aad_assignment_02_springmvc.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.sql.DatabaseMetaData;
@@ -21,6 +22,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Data
 @Entity
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Table(name = "project")
 public class ProjectEntity implements SuperEntity {
 
@@ -30,9 +33,22 @@ public class ProjectEntity implements SuperEntity {
     private String companyName;
     @Column(nullable = false)
     private String companyEmail;
-    @ManyToOne
-    @JoinColumn(name = "tlId",referencedColumnName = "nic")
-    private TLEntity tlEntity;
+
+
+
+//
+//
+//    @ManyToOne
+//    @JoinColumn(name = "tlId", referencedColumnName = "nic")
+//    private TLEntity tlEntity;
+//
+//    public TLEntity getTlEntity() {return tlEntity;}
+//
+//    public void setTlEntity(TLEntity tlEntity) {this.tlEntity = tlEntity;}
+//
+//
+
+
 
     public String getProjectId() {
         return ProjectId;
@@ -58,11 +74,5 @@ public class ProjectEntity implements SuperEntity {
         this.companyEmail = companyEmail;
     }
 
-    public TLEntity getTlEntity() {
-        return tlEntity;
-    }
 
-    public void setTlEntity(TLEntity tlEntity) {
-        this.tlEntity = tlEntity;
-    }
 }

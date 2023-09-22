@@ -9,6 +9,7 @@
 package lk.ijse.gdse61.aad.aad_assignment_02_springmvc.entity;
 
 import lombok.*;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.util.List;
@@ -28,11 +29,21 @@ public class TLEntity implements SuperEntity {
     @Column(nullable = false)
     String contact;
 
-    @OneToMany(mappedBy = "tech_lead",cascade = CascadeType.ALL)
-    private List<ProjectEntity> projectEntityList;
 
-//    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
-//    private List<Project> projectList;
+
+
+
+//    @OneToMany(mappedBy = "nic",cascade = CascadeType.ALL)
+//    private List<ProjectEntity> projectList;
+//
+//    public List<ProjectEntity> getProjectEntityList() {return projectList;}
+//
+//    public void setProjectEntityList(List<ProjectEntity> projectEntityList) {this.projectList = projectEntityList;}
+//
+
+
+
+
 
 
     public String getNic() {
@@ -67,11 +78,5 @@ public class TLEntity implements SuperEntity {
         this.contact = contact;
     }
 
-    public List<ProjectEntity> getProjectEntityList() {
-        return projectEntityList;
-    }
 
-    public void setProjectEntityList(List<ProjectEntity> projectEntityList) {
-        this.projectEntityList = projectEntityList;
-    }
 }

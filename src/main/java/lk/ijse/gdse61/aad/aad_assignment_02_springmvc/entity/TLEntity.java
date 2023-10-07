@@ -30,16 +30,13 @@ public class TLEntity implements SuperEntity {
     String contact;
 
 
+    @OneToMany(mappedBy = "tlEntity",cascade = CascadeType.ALL)
+    private List<ProjectEntity> projectList;
 
+    public List<ProjectEntity> getProjectEntityList() {return projectList;}
 
+    public void setProjectEntityList(List<ProjectEntity> projectEntityList) {this.projectList = projectEntityList;}
 
-//    @OneToMany(mappedBy = "nic",cascade = CascadeType.ALL)
-//    private List<ProjectEntity> projectList;
-//
-//    public List<ProjectEntity> getProjectEntityList() {return projectList;}
-//
-//    public void setProjectEntityList(List<ProjectEntity> projectEntityList) {this.projectList = projectEntityList;}
-//
 
 
 

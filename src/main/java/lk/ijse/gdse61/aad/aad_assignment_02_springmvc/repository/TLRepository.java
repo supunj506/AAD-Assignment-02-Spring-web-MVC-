@@ -15,6 +15,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TLRepository extends JpaRepository<TLEntity,String> {
-//    TLEntity getTLEntityByNic(String nic);
-    TLEntity findTLEntityByNic(String nic);
+    TLEntity findTLEntityByNic(String id);
 }

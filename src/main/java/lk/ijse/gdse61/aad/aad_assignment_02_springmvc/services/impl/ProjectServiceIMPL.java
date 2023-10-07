@@ -27,6 +27,8 @@ public class ProjectServiceIMPL implements ProjectService {
 
     @Autowired
     ProjectRepository projectRepository;
+
+    @Autowired
     TLRepository tlRepository;
 
     @Autowired
@@ -34,7 +36,8 @@ public class ProjectServiceIMPL implements ProjectService {
 
     @Override
     public ProjectDTO saveProject(ProjectDTO projectDTO) {
-        ProjectEntity projectEntity = converter.getProjectEntity(projectDTO);
+        TLEntity tlEntityByNic = tlRepository.findTLEntityByNic(projectDTO.getTlId());
+        ProjectEntity projectEntity = new ProjectEntity(projectDTO.getProjectId(), projectDTO.getCompanyName(), projectDTO.getCompanyEmail(), tlEntityByNic);
         projectRepository.save(projectEntity);
         return projectDTO;
     }
